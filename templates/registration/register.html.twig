@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+{% block meta %}
+	<meta name="base_url" content="http://www.fgtechs.fr/z-pedro/wwwluxuryservices">
+	<meta
+	name="csrf-token" content="9Tnm0YBCxgVTxoqI1HzccsU5NuE9RughZmhpzgXn">
+	<!--  favicon -->
+	<link rel="shortcut icon" href="assets/img/ico/fav.png">
+{% endblock %}
+{% block stylesheets %}
+	<style>
+		.page-title-bg {
+			background-image: url('../../assets/img/bg3.jpg');
+		}
+		.log-section form .checkbox label {
+			font-size: 16px
+		}
+		.log-section form .checkbox label a {
+			color: #b6a575;
+			text-decoration: underline;
+			text-transform: inherit;
+			font-size: 16px
+		}
+		.log-section form .links a {
+			display: block;
+			text-align: center;
+			color: #b6a575;
+			text-decoration: underline;
+			text-transform: inherit;
+			font-size: 16px
+		}
+		.checkbox {
+			left: 20px !important;
+		}
+	</style>
+{% endblock %}
+{% block body %}
+	<div
+		class="base">
+
+		<!-- Page -->
+		<div
+			class="page">
+
+			<!-- Page Header-->
+			<section class="page-title page-title-bg fixed-bg overlay dark-5 padding-top-160 padding-bottom-80">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="white-text">Register</h2>
+							<span class="white-text">Welcome on board</span>
+							<ol class="breadcrumb">
+								<li>
+									<a href="#!">Home</a>
+								</li>
+								<li class="active">Register</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<!-- Page Content-->
+			<section class="section-padding gray-bg log-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-sm-offset-3 card card-panel">
+							<h3 class="text-extrabold">Create a new account</h3>
+
+							{{ form_errors(registrationForm) }}
+
+							{{ form_start(registrationForm) }}
+
+							<div class="input-field">
+								{{ form_row(registrationForm.email) }}
+							</div>
+							<div class="input-field">
+								{{ form_row(registrationForm.plainPassword, { label: 'Password'}) }}
+								<i class="fa fa-eye show-password"></i>
+							</div>
+							<div class="checkbox">
+								<input type="checkbox" name="{{field_name(registrationForm.agreeTerms)}}" value="1" id="accept-terms" required/>
+								<label for="accept-terms">I have read and I accept the
+									<a href="#!" target="_blank">Terms Of Use</a>
+								</label>
+							</div>
+							<button type="submit" class="btn btn-lg gradient secondary btn-block waves-effect waves-light mt-20 mb-20">Create an account</button>
+							<div class="links">
+								<a href="{{path('app_login')}}">Already have an account? Click here</a>
+							</div>
+							{{ form_end(registrationForm) }}
+
+
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+	</div>
+
+	{% block javascripts %}
+		 <script type="text/javascript">
+		
+		    onAppReady(function() {
+		        $('.preload').remove();
+		    });
+		</script>
+	{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+{% block meta %}
+<meta name="base_url" content="http://www.fgtechs.fr/z-pedro/wwwluxuryservices">
+<meta name="csrf-token" content="9Tnm0YBCxgVTxoqI1HzccsU5NuE9RughZmhpzgXn">
+<!--  favicon -->
+<link rel="shortcut icon" href="assets/img/ico/fav.png">
+{% endblock %}
+{% block body %}
+	<div
+		class="base">
+
+		<!-- Page -->
+		<div
+			class="page">
+
+			<!-- Page Header-->
+			<section class="page-title page-title-bg fixed-bg overlay dark-5 padding-top-160 padding-bottom-80">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="white-text">Login</h2>
+							<span class="white-text">Welcome on board</span>
+							<ol class="breadcrumb">
+								<li>
+									<a href="#!">Home</a>
+								</li>
+								<li class="active">Login</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Page Content-->
+			<section class="section-padding gray-bg log-section">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-xs-12 col-sm-6 col-md-4">
+							<div class="card card-panel">
+								<h3 class="text-extrabold">Log in to your account</h3>
+								<form method="post">
+									{% if error %}
+										<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+									{% endif %}
+
+									{% if app.user %}
+										<div class="mb-3">
+											You are logged in as
+											{{ app.user.userIdentifier }},
+											<a href="{{ path('app_logout') }}">Logout</a>
+										</div>
+									{% endif %}
+
+									<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+									<div class="input-field">
+										<label for="inputEmail">Email</label>
+										<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+									</div>
+									<div class="input-field">
+										<label for="inputPassword">Password</label>
+										<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+										<i class="fa fa-eye show-password"></i>
+									</div>
+									<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+									<div class="checkbox">
+										<input type="checkbox" id="keep-logged" name="remember" value="1"/>
+										<label for="keep-logged">Keep me logged in</label>
+									</div>
+									<button class="btn btn-lg gradient secondary btn-block waves-effect waves-light mt-20 mb-20" type="submit">
+										Login
+									</button>
+									<div class="links">
+										<a href="#!">Forgot your password?</a>
+									</div>
+								</form>
+
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-8">
+							<div class="card card-panel ptb-70 text-center">
+								<div class="promo-info">
+									<h1 class="text-uppercase mb-30 text-extrabold font-30">New to Luxury Services ?</h1>
+									<p class="width-60 mb-30">Joining us is allowing our recruitment expertise and personal guidance to bring the best out in you by choosing the most suited position.</p>
+									<a href="{{ path('app_register')}}" class="btn btn-lg gradient secondary waves-effect waves-light mt-20">
+										<span>Sign-up<strong>
+												Free</strong>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+{% endblock %}
