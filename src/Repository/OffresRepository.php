@@ -20,6 +20,47 @@ class OffresRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Offres::class);
     }
+   
+     /*@return JobOffer[] Returns an array of Offer objects*/
+      public function findTenAll(): array
+      {
+       return $this->createQueryBuilder('o')
+       ->setMaxResults(10)
+       ->getQuery()
+       ->getResult();
+    }
+    
+     /*@return JobOffer[] Returns an array of Offer objects*/
+     public function findTenByCreatedAt(): array
+     {
+      return $this->createQueryBuilder('o')
+      ->orderBy('o.createdAt', 'DESC')
+      ->setMaxResults(10)
+      ->getQuery()
+      ->getResult();
+    }
+
+    public function findPreviousOffre(Offres $offre): ?Offres
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.id < :currentId')
+            ->setParameter('currentId', $offre->getId())
+            ->orderBy('o.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findNextOffre(Offres $offre): ?Offres
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.id > :currentId')
+            ->setParameter('currentId', $offre->getId())
+            ->orderBy('o.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
     //    /**
     //     * @return Offres[] Returns an array of Offres objects

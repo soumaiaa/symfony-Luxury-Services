@@ -42,23 +42,11 @@ class Candidats
     #[ORM\Column(length: 255)]
     private ?string $currentLocation = null;
 
-  
-
-
-
-   
-
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-  
-
-  
-
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?User $user = null;
-
-   
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Media $photo = null;
@@ -80,6 +68,83 @@ class Candidats
 
     #[ORM\ManyToOne(inversedBy: 'candidats')]
     private ?Categorie $interestJob = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $pourcentage = null;
+
+  
+
+    // custom function
+  public function checkPercentCompleted(): int
+  {
+      $totalFields = 15;
+      $percentPart = 100/15; //6.66
+      $actualPercent = 0;
+
+
+      $genderValue = $this->getGender();
+      if(!empty($genderValue)) {
+        $actualPercent += $percentPart;
+      }
+
+      $firstnameValue = $this->getFirstName();
+      if (!empty($firstnameValue)) {
+          $actualPercent += $percentPart;
+      }
+      $lastnameValue = $this->getLastName();
+      if (!empty($lastnameValue)) {
+          $actualPercent += $percentPart;
+      }
+      $cityValue = $this->getCurrentLocation();
+      if (!empty($cityValue)) {
+          $actualPercent += $percentPart;
+      }
+      $adressValue = $this->getAddress();
+      if (!empty($adressValue)) {
+          $actualPercent += $percentPart;
+      }
+      $countryValue = $this->getCountry();
+      if (!empty($countryValue)) {
+          $actualPercent += $percentPart;
+      }
+      $nationalityValue =$this->getNationalite();
+      if (!empty($nationalityValue)) {
+          $actualPercent += $percentPart;
+      }
+      $passportValue = $this->getPasseport();
+      if (!empty($passportValue)) {
+          $actualPercent += $percentPart;
+      }
+      $curriculumValue = $this->getCv();
+      if (!empty($curriculumValue)) {
+          $actualPercent += $percentPart;
+      }
+      $pictureValue = $this->getPhoto();
+      if (!empty($pictureValue)) {
+          $actualPercent += $percentPart;
+      }
+      $dateOfBirthValue = $this->getBirthDate();
+      if (!empty($dateOfBirthValue)) {
+          $actualPercent += $percentPart;
+      }
+      $placeOfBirthValue = $this->getBirthPlace();
+      if (!empty($placeOfBirthValue)) {
+          $actualPercent += $percentPart;
+      }
+      $sectorValue = $this->getInterestJob();
+      if (!empty($sectorValue)) {
+          $actualPercent += $percentPart;
+      }
+      $experienceValue = $this->getExperience();
+      if (!empty($experienceValue)) {
+          $actualPercent += $percentPart;
+      }
+      $descriptionValue = $this->getDescription();
+      if (!empty($descriptionValue)) {
+          $actualPercent += $percentPart;
+      }
+      return round($actualPercent);
+  }
 
     public function __construct()
     {
@@ -323,6 +388,20 @@ class Candidats
 
         return $this;
     }
+
+    public function getPourcentage(): ?int
+    {
+        return $this->pourcentage;
+    }
+
+    public function setPourcentage(?int $pourcentage): static
+    {
+        $this->pourcentage = $pourcentage;
+
+        return $this;
+    }
+
+  
 
   
 }

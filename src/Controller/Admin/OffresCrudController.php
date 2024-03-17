@@ -28,7 +28,7 @@ class OffresCrudController extends AbstractCrudController
             TextField::new('statut'),
             TextField::new('dateCloture'),
             TextField::new('ref'),
-            TextEditorField::new('description'),          
+            TextField::new('description'),          
             AssociationField::new('categorie'),
             AssociationField::new('typecontract'),
             AssociationField::new('client'),

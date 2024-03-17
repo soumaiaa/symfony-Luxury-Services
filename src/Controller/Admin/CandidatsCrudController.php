@@ -28,7 +28,7 @@ class CandidatsCrudController extends AbstractCrudController
             TextField::new('birthDate'),
             TextField::new('birthPlace'),
             TextField::new('currentLocation'),
-            TextEditorField::new('description'),
+            TextField::new('description'),
             // EntityType::new('relationManyToOne', 'Entité ManyToOne')
             // ->setClass(VotreClasseManyToOne::class)
             // ->setRequired(true),

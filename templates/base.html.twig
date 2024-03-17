@@ -93,9 +93,15 @@
                     </div>
                     <div class="icon-wrapper">
                         <span class="account">
-							<a href="{{ path('app_profile')}}">
+                        {% if app.user %}
+							<a href="{{ path('app_candidats_edit', {id : app.user.id})}}">
                                 <i class="material-icons">&#xE7FD;</i>
                             </a>
+                        {% else %} 
+                          <a href="{{ path('app_login') }}">
+                                <i class="material-icons">&#xE7FD;</i>
+                            </a>
+                        {% endif %}
 						</span>
                     </div>
                     <div class="nav-overlay" id="overlay">
@@ -106,26 +112,48 @@
                                 <li><a href="{{ path('app_about_us')}}">About Us</a></li>
                                 <li><a href="{{ path('app_contact')}}">Contact</a></li>
                                 <li>-</li>
-                                <li><a href="{{ path('app_profile')}}">Profile</a></li>
+                                {% if app.user %}
+                                <li><a href="{{ path('app_candidats_edit', {id : app.user.id}) }}">Profile</a></li>
                                 <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                                 {% else %} 
+                                <li><a href="{{ path('app_login') }}">Login</a></li> 
+                                <li><a href="{{ path('app_register') }}">Sign Up</a></li> 
+                                {% endif %}
+                                
                             </ul>
                         </nav>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    {% if app.user %}
                     <ul class="menuzord-menu pull-right light" role="navigation">
                         <li class=" dropdown">
-                            <a target="_self" href="{{ path('app_login')}}">
+                            <a target="_self" href="{{ path('app_candidats_edit', {id: app.user.id}) }}">
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                        <li class=" dropdown">
+                            <a target="_self" href="{{ path('app_logout') }}" class="btn bn-lg gradient secondary btn-block waves-effect waves-light btn-register">
+                                <span>Logout</span>
+                            </a>
+
+                        </li>
+                    </ul>
+                    {% else %}
+                    <ul class="menuzord-menu pull-right light" role="navigation">
+                        <li class=" dropdown">
+                            <a target="_self" href="{{ path('app_login') }}">
                                 <span>Login</span>
                             </a>
                         </li>
                         <li class=" dropdown">
-                            <a target="_self" href="{{ path('app_register')}}" class="btn bn-lg gradient secondary btn-block waves-effect waves-light btn-register">
+                            <a target="_self" href="{{ path('app_register') }}" class="btn bn-lg gradient secondary btn-block waves-effect waves-light btn-register">
                                 <span>Sign Up</span>
                             </a>
 
                         </li>
                     </ul>
+                    {% endif %}
                     <ul class="menuzord-menu pull-right light" role="navigation">
                         <li class="active dropdown">
                             <a target="_self" href="/">
@@ -198,7 +226,7 @@
                     </a>
                 </li>
                 <li class=" dropdown">
-                    <a target="_self" href="/template/jobs/jobs.html">
+                    <a target="_self" href="{{ path('app_job')}}">
                         <span>Jobs offers</span>
                     </a>
                 </li>
