@@ -8,13 +8,15 @@ use App\Entity\Experience;
 use App\Entity\Gender;
 use App\Entity\Media;
 use App\Entity\User;
-
+use Doctrine\DBAL\Types\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CandidatsType extends AbstractType
@@ -27,10 +29,7 @@ class CandidatsType extends AbstractType
             ->add('address')
             ->add('country')
             ->add('nationalite')
-            ->add('birthdate', null, [
-                'widget' => 'single_text',
-                'label'=>' ', 
-            ])
+            ->add('birthdate', TextType::class)
             ->add('birthplace')
             ->add('currentLocation')
             ->add('description')
@@ -38,7 +37,7 @@ class CandidatsType extends AbstractType
             //     'class' => User::class,
                 
             // ])
-            ->add ('user')
+            // ->add ('user')
             // ->add ('user', UserType::class)
            
             ->add('photo', FileType::class, [

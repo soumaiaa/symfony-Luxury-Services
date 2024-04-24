@@ -52,8 +52,9 @@
                         <li class=" waves-effect waves-light" data-group="management">Management & HR</li>
                     </ul> #}
                     <div class="portfolio portfolio-with-title col-2 gutter mt-30">
+                        {% for categorie, offres in offresParCategorie %}
                         {% for offre in offres %}
-                        <div class="portfolio-item" data-groups='["all", "commercial"]'>
+                        <div class="portfolio-item" data-groups='["all", "{{ categorie  }}"]'>
                             <div class="portfolio-wrapper">
                                 <div class="card job-card">
                                     <div class="card-content">
@@ -82,7 +83,7 @@
                             </div>
                         </div>
                         {% endfor %}
-                     
+                        {% endfor %}
                         <div class="no-item"></div>
                     </div>
                 </div>

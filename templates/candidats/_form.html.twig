@@ -9,11 +9,12 @@
 					{# {{ form_widget(form.gender) }} #}
 					{# {{ form_label(form.gender) }} #}
 					{# <select id="gender" name="gender">
-						<option value="">Choose an option...</option>
-						<option value="male">Male</option>
-						<option value="female" selected="selected">Female</option>
-						<option value="transgender">Transgender</option>
-					</select>#}<label for="gender" class="active"> Gender</label>
+											<option value="">Choose an option...</option>
+											<option value="male">Male</option>
+											<option value="female" selected="selected">Female</option>
+											<option value="transgender">Transgender</option>
+										</select>#}
+						<label for="gender" class="active"> Gender</label>
 					{{ form_row(form.gender) }}
 				</div>
 			</div>
@@ -22,7 +23,7 @@
 				<div
 					class="input-field">
 					{# <input type="text" class="form-control" name="first_name" id="first_name" value="" required>
-					<label for="first_name">First name</label> #}
+										<label for="first_name">First name</label> #}
 					{{ form_row(form.firstName) }}
 				</div>
 			</div>
@@ -30,7 +31,7 @@
 				<div
 					class="input-field">
 					{# <input type="text" class="form-control" name="last_name" id="last_name" value="" required>
-					<label for="last_name">Last name</label> #}
+										<label for="last_name">Last name</label> #}
 					{{ form_row(form.lastName) }}
 				</div>
 			</div>
@@ -38,7 +39,7 @@
 				<div
 					class="input-field">
 					{# <input required="required" id="current_location" name="current_location" type="text" value="">
-														<label for="current_location">Current location</label> #}
+																			<label for="current_location">Current location</label> #}
 					{{ form_row(form.currentLocation) }}
 				</div>
 			</div>
@@ -46,7 +47,7 @@
 				<div
 					class="input-field">
 					{# <input id="address" name="address" type="text" value="">
-					<label for="address">Address</label> #}
+										<label for="address">Address</label> #}
 					{{ form_row(form.address) }}
 				</div>
 			</div>
@@ -62,25 +63,26 @@
 						{{ form_row(form.photo) }}
 					</div>
 
-					<div class="existing-file">
+					<div
+						class="existing-file">
 						{# {% if (candidat.photo) %}
-							<div class="existing-file">
-								<a href="{{ asset('uploads/brochures/') }}{{ candidat.photo }}" target="_blank">
-									<i class="material-icons">&#xE24D;</i>
-									your picture</a>
-							</div>
-							<div class="file-path-wrapper">
-								<input class="file-path validate" type="text" placeholder="Upload your ID photo" readonly>
-							</div>
-						{% else %} #}
-							<a href="#" target="_blank">
+													<div class="existing-file">
+														<a href="{{ asset('uploads/brochures/') }}{{ candidat.photo }}" target="_blank">
+															<i class="material-icons">&#xE24D;</i>
+															your picture</a>
+													</div>
+													<div class="file-path-wrapper">
+														<input class="file-path validate" type="text" placeholder="Upload your ID photo" readonly>
+													</div>
+												{% else %} #}
+						<a href="#" target="_blank">
 
 							<i class="material-icons">&#xE24D;</i>
 							profil_picture.jpg</a>
-					
+
 						{# {% endif %} #}
-						
-						
+
+
 					</div>
 					<div class="file-path-wrapper">
 						<input class="file-path validate" type="text" placeholder="Upload your ID photo" readonly>
@@ -93,7 +95,7 @@
 						<div
 							class="input-field">
 							{# <input id="country" name="country" type="text" value="">
-																		<label for="country">Country</label> #}
+																									<label for="country">Country</label> #}
 							{{ form_row(form.country) }}
 						</div>
 					</div>
@@ -101,7 +103,7 @@
 						<div
 							class="input-field">
 							{# <input id="nationality" name="nationality" type="text" value="">
-																		<label for="nationality">Nationality</label> #}
+																									<label for="nationality">Nationality</label> #}
 							{{ form_row(form.nationalite) }}
 						</div>
 					</div>
@@ -111,14 +113,15 @@
 
 							{# <input class="datepicker" id="birth_date" name="birth_date" type="text" value="">#}
 							<label class="active" for="birth_date">Birthdate</label>
-							{{ form_row(form.birthdate) }}
+							{{ form_widget(form.birthdate) }}
+							
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6">
 						<div
 							class="input-field">
 							{# <input id="birth_place" name="birth_place" type="text" value="">
-																		<label for="birth_place">Birthplace</label> #}
+																									<label for="birth_place">Birthplace</label> #}
 							{{ form_row(form.birthplace) }}
 						</div>
 					</div>
@@ -175,9 +178,9 @@
 					<div
 						class="input-field" style="margin-top: 5px;">
 						{# <select id="job_sector" name="job_sector[]" multiple data-placeholder="Type in or Select job sector you would be interested in.">
-							<option value="">Choose an option...</option>
-							<option value="">job sector</option>
-						</select>#}
+													<option value="">Choose an option...</option>
+													<option value="">job sector</option>
+												</select>#}
 						<label for="job_sector" class="active">Interest in job sector</label>
 						{{ form_row(form.interestJob) }}
 					</div>
@@ -186,14 +189,14 @@
 					<div
 						class="input-field">
 						{# <select id="experience" required="required" name="experience">
-							<option value="">Choose</option>
-							<option value="3m">0 - 6 month</option>
-							<option value="6m">6 month - 1 year</option>
-							<option value="1y">1 - 2 years</option>
-							<option value="2y">2+ years</option>
-							<option value="5y" selected="selected">5+ years</option>
-							<option value="10y">10+ years</option>
-						</select>#}
+													<option value="">Choose</option>
+													<option value="3m">0 - 6 month</option>
+													<option value="6m">6 month - 1 year</option>
+													<option value="1y">1 - 2 years</option>
+													<option value="2y">2+ years</option>
+													<option value="5y" selected="selected">5+ years</option>
+													<option value="10y">10+ years</option>
+												</select>#}
 						<label for="experience" class="active">Experience</label>
 						{{ form_row(form.experience) }}
 					</div>
@@ -203,7 +206,7 @@
 				<div
 					class="input-field">
 					{# <textarea class="materialize-textarea" id="description" name="description" cols="50" rows="10"></textarea>
-														<label for="description">Short description for your profile, as well as more personnal informations (e.g. your hobbies/interests ). You can also paste any link you want.</label> #}
+																			<label for="description">Short description for your profile, as well as more personnal informations (e.g. your hobbies/interests ). You can also paste any link you want.</label> #}
 					{{ form_row(form.description) }}
 				</div>
 			</div>
@@ -219,7 +222,7 @@
 				<div
 					class="input-field">
 					{# <input required="required" id="email" name="email" type="email" value="">
-														<label for="email">Email</label> #}
+																			<label for="email">Email</label> #}
 					{{ form_row(userEditForm.email) }}
 
 				</div>
@@ -228,22 +231,22 @@
 				<div
 					class="input-field">
 					{# <input id="password" name="password" type="password" value="">
-							<label for="password">Change your password here</label> #}
+												<label for="password">Change your password here</label> #}
 					{{ form_row(userEditForm.password) }}
 				</div>
 			</div>
 			{# <div class="col-xs-12 col-sm-4">
-				<div class="input-field">
-					<input id="password_repeat" name="password_repeat" type="password" value="">
-					<label for="password_repeat">Confirm your new password</label>
-				</div>
-			</div> #}
+							<div class="input-field">
+								<input id="password_repeat" name="password_repeat" type="password" value="">
+								<label for="password_repeat">Confirm your new password</label>
+							</div>
+						</div> #}
 		</div>
 		<div class="row">
 			<div class="col-xs-12 mt-40 mb-80 delete-account">
 				<a href="" onclick="return prompt('Please Type \'Delete my account\' to delete your K-Yachting Services account:') == 'Delete my account'" class="btn btn-block btn-lg waves-effect waves-light">
 					<i class="material-icons">&#xE872;</i>Delete my account</a>
-				  {# {{ include('candidats/_delete_form.html.twig') }}  #}
+				{# {{ include('candidats/_delete_form.html.twig') }}  #}
 			</div>
 		</div>
 		<div class="row">
@@ -255,14 +258,14 @@
 			<div
 				class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4">
 				{# <button type="submit" class="btn btn-block btn-lg gradient secondary waves-effect waves-light">
-					 <span>
-						 <strong>UPDATE</strong>
-						 NOW</span>
-				 </button>#}
-				 <button class="btn  btn-block btn-lg gradient secondary waves-effect waves-light">{{ button_label|default('UPDATE NOW') }}</button>
+									 <span>
+										 <strong>UPDATE</strong>
+										 NOW</span>
+								 </button>#}
+				<button class="btn  btn-block btn-lg gradient secondary waves-effect waves-light">{{ button_label|default('UPDATE NOW') }}</button>
 			</div>
 		</div>
-     {# {{ form_row(form.user) }} #}
+		{# {{ form_row(form.user) }} #}
 	</div>
 </section>
 {# </form> #}
