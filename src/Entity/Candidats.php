@@ -33,9 +33,6 @@ class Candidats
     #[ORM\Column(length: 255)]
     private ?string $nationalite = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $birthdate = null;
-
     #[ORM\Column(length: 255)]
     private ?string $birthplace = null;
 
@@ -72,7 +69,8 @@ class Candidats
     #[ORM\Column(nullable: true)]
     private ?int $pourcentage = null;
 
-  
+    #[ORM\Column(length: 255)]
+    private ?string $birthdate = null;
 
     // custom function
   public function checkPercentCompleted(): int
@@ -220,17 +218,7 @@ class Candidats
         return $this;
     }
 
-    public function getBirthdate(): ?\DateTimeInterface
-    {
-        return $this->birthdate;
-    }
-
-    public function setBirthdate(\DateTimeInterface $birthdate): static
-    {
-        $this->birthdate = $birthdate;
-
-        return $this;
-    }
+ 
 
     public function getBirthplace(): ?string
     {
@@ -397,6 +385,18 @@ class Candidats
     public function setPourcentage(?int $pourcentage): static
     {
         $this->pourcentage = $pourcentage;
+
+        return $this;
+    }
+
+    public function getBirthdate(): ?string
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(string $birthdate): static
+    {
+        $this->birthdate = $birthdate;
 
         return $this;
     }
